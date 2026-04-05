@@ -1,0 +1,82 @@
+[
+  {
+    "id": "prod_1",
+    "name": "Suffolk Beef Box",
+    "price": 45.0,
+    "category": "Butchery",
+    "image": "/images/products/beef-box.jpg",
+    "description": "Locally sourced beef selection box with roasting, braising and steak cuts.",
+    "available": true,
+    "createdAt": "2026-04-05T10:00:00.000Z"
+  },
+  {
+    "id": "prod_2",
+    "name": "Butcher's Steak Night Pack",
+    "price": 29.0,
+    "category": "Butchery",
+    "image": "/images/products/steak-night-pack.jpg",
+    "description": "A ready-to-cook steak pack prepared by the butchery counter for an easy weekend supper.",
+    "available": true,
+    "createdAt": "2026-04-05T10:05:00.000Z"
+  },
+  {
+    "id": "prod_3",
+    "name": "Local Cheese Board",
+    "price": 16.5,
+    "category": "Deli",
+    "image": "/images/products/local-cheese-board.jpg",
+    "description": "A deli-prepared board with regional cheeses, crackers and seasonal accompaniments.",
+    "available": true,
+    "createdAt": "2026-04-05T10:10:00.000Z"
+  },
+  {
+    "id": "prod_4",
+    "name": "Suffolk Picnic Selection",
+    "price": 22.0,
+    "category": "Deli",
+    "image": "/images/products/picnic-selection.jpg",
+    "description": "A picnic-ready selection of deli favourites, chutney and bakery sides for two.",
+    "available": true,
+    "createdAt": "2026-04-05T10:15:00.000Z"
+  },
+  {
+    "id": "prod_5",
+    "name": "Suffolk Weekend Hamper",
+    "price": 48.0,
+    "category": "Hampers",
+    "image": "/images/products/weekend-hamper.jpg",
+    "description": "A premium hamper with biscuits, preserves, savoury snacks and food hall favourites.",
+    "available": true,
+    "createdAt": "2026-04-05T10:20:00.000Z"
+  },
+  {
+    "id": "prod_6",
+    "name": "Afternoon Tea Gift Hamper",
+    "price": 52.0,
+    "category": "Hampers",
+    "image": "/images/products/afternoon-tea-hamper.jpg",
+    "description": "A gift-ready hamper inspired by afternoon tea with sweet treats and pantry additions.",
+    "available": true,
+    "createdAt": "2026-04-05T10:25:00.000Z"
+  },
+  {
+    "id": "prod_7",
+    "name": "Spring Table Centrepiece Bundle",
+    "price": 27.5,
+    "category": "Seasonal",
+    "image": "/images/products/spring-centrepiece-bundle.jpg",
+    "description": "A seasonal hosting bundle with table-ready deli items selected for spring gatherings.",
+    "available": true,
+    "createdAt": "2026-04-05T10:30:00.000Z"
+  },
+  {
+    "id": "prod_8",
+    "name": "Easter Dessert Collection",
+    "price": 18.0,
+    "category": "Seasonal",
+    "image": "/images/products/easter-dessert-collection.jpg",
+    "description": "A seasonal dessert selection with bakery treats and Easter weekend favourites.",
+    "available": true,
+    "createdAt": "2026-04-05T10:35:00.000Z"
+  }
+]

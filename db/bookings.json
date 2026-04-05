@@ -1,0 +1,30 @@
+[
+  {
+    "id": "621d3bb7-8c89-453c-8b8f-119ee093e452",
+    "serviceId": "breakfast",
+    "serviceTitle": "Breakfast",
+    "partySize": 4,
+    "preferredTime": "8:30am",
+    "customerName": "Adam Pattison",
+    "customerEmail": "adampattison02@gmail.com",
+    "customerPhone": "07484300722",
+    "notes": "glutten",
+    "status": "confirmed",
+    "createdAt": "2026-04-04T22:01:26.821Z",
+    "updatedAt": "2026-04-04T23:19:13.710Z"
+  },
+  {
+    "id": "2d1f361c-dd7c-4c8f-8c5a-5098d6055284",
+    "serviceId": "lunch",
+    "serviceTitle": "Lunch",
+    "partySize": 4,
+    "preferredTime": "12:00pm",
+    "customerName": "Test User",
+    "customerEmail": "test@example.com",
+    "customerPhone": "07700900123",
+    "notes": "test",
+    "status": "confirmed",
+    "createdAt": "2026-04-04T22:38:03.000Z",
+    "updatedAt": "2026-04-04T23:19:08.145Z"
+  }
+]
