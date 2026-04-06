@@ -1,24 +1,65 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
 
-function resolveDbFilePath(filename: string) {
-  return path.join(process.cwd(), "db", filename);
+const SOURCE_DB_DIR = path.join(process.cwd(), "db");
+const RUNTIME_DB_DIR = path.join("/tmp", "suffolk-food-hall-mvp", "db");
+
+function getSourceDbFilePath(filename: string) {
+  return path.join(SOURCE_DB_DIR, filename);
 }
 
-async function ensureDbFile(filePath: string) {
-  await fs.mkdir(path.dirname(filePath), { recursive: true });
+function getRuntimeDbFilePath(filename: string) {
+  return path.join(RUNTIME_DB_DIR, filename);
+}
 
+async function pathExists(filePath: string) {
   try {
     await fs.access(filePath);
+    return true;
   } catch {
-    await fs.writeFile(filePath, "[]\n", "utf8");
+    return false;
   }
 }
 
-export async function readJsonArrayFile<T>(filename: string): Promise<T[]> {
-  const filePath = resolveDbFilePath(filename);
-  await ensureDbFile(filePath);
+async function ensureRuntimeDbFile(filename: string) {
+  const runtimePath = getRuntimeDbFilePath(filename);
 
+  await fs.mkdir(path.dirname(runtimePath), { recursive: true });
+
+  if (await pathExists(runtimePath)) {
+    return runtimePath;
+  }
+
+  const sourcePath = getSourceDbFilePath(filename);
+
+  if (await pathExists(sourcePath)) {
+    const sourceContents = await fs.readFile(sourcePath, "utf8");
+    await fs.writeFile(runtimePath, sourceContents, "utf8");
+    return runtimePath;
+  }
+
+  await fs.writeFile(runtimePath, "[]\n", "utf8");
+  return runtimePath;
+}
+
+async function resolveReadableDbFilePath(filename: string) {
+  const runtimePath = getRuntimeDbFilePath(filename);
+
+  if (await pathExists(runtimePath)) {
+    return runtimePath;
+  }
+
+  const sourcePath = getSourceDbFilePath(filename);
+
+  if (await pathExists(sourcePath)) {
+    return sourcePath;
+  }
+
+  return ensureRuntimeDbFile(filename);
+}
+
+export async function readJsonArrayFile<T>(filename: string): Promise<T[]> {
+  const filePath = await resolveReadableDbFilePath(filename);
   const raw = await fs.readFile(filePath, "utf8");
   const parsed = JSON.parse(raw) as unknown;
 
@@ -30,7 +71,6 @@ export async function readJsonArrayFile<T>(filename: string): Promise<T[]> {
 }
 
 export async function writeJsonArrayFile<T>(filename: string, value: T[]) {
-  const filePath = resolveDbFilePath(filename);
-  await ensureDbFile(filePath);
+  const filePath = await ensureRuntimeDbFile(filename);
   await fs.writeFile(filePath, `${JSON.stringify(value, null, 2)}\n`, "utf8");
 }
